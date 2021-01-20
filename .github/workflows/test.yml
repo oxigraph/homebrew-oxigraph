@@ -1,0 +1,19 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  install:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest ]
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew tap oxigraph/oxigraph
+      - run: brew install --verbose oxigraph
+      - run: brew test oxigraph
+      - run: which oxigraph_server
