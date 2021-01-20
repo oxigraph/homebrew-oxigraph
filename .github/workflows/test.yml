@@ -6,14 +6,14 @@ on:
       - master
 
 jobs:
-  install:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ macos-latest, ubuntu-latest ]
     steps:
-      - uses: Homebrew/actions/setup-homebrew@master
+      - run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       - run: brew tap oxigraph/oxigraph
       - run: brew install --verbose oxigraph
       - run: brew test oxigraph
-      - run: which oxigraph_server
+      - run: brew audit --new oxigraph --tap oxigraph/oxigraph
