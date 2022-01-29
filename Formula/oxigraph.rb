@@ -4,12 +4,7 @@ class Oxigraph < Formula
   url "https://github.com/oxigraph/oxigraph/archive/v0.3.0-beta.1.tar.gz"
   sha256 "98d345580b768c37fd22eec97e7b1830a3b5360b13046ab8f37936828b90d7c7"
   license any_of: ["Apache-2.0", "MIT"]
-  depends_on "pkg-config" => :build
   depends_on "rust" => :build
-
-  on_linux do
-    depends_on "openssl@1.1"
-  end
 
   def install
     system "cargo", "install", "--locked", "--root", prefix, "--path", "server"
