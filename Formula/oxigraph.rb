@@ -8,6 +8,7 @@ class Oxigraph < Formula
   depends_on "rust" => :build
 
   def install
+    system "sed", "-i", "s/path = .*, //g", "server/Cargo.toml"
     system "cargo", "install", "--locked", "--root", prefix, "--path", "server"
   end
 
