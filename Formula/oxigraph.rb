@@ -1,16 +1,11 @@
 class Oxigraph < Formula
   desc "SPARQL database HTTP server"
   homepage "https://oxigraph.org/server/"
-  url "https://github.com/oxigraph/oxigraph/archive/v0.2.5.tar.gz"
-  sha256 "f9855472dcf746f97d80cba36ae95abdfa0b0429932b527f7288371c858bc6a8"
+  url "https://github.com/oxigraph/oxigraph/releases/download/v0.3.0/oxigraph_v0.3.0.tar.gz"
+  sha256 "eb0684a06c08b47f31d1539093f5b6acbf8ababf89153a5a9f4bca1fbeb395e0"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/oxigraph/oxigraph.git"
-  depends_on "pkg-config" => :build
   depends_on "rust" => :build
-
-  on_linux do
-    depends_on "openssl@1.1"
-  end
 
   def install
     system "cargo", "install", "--locked", "--root", prefix, "--path", "server"
