@@ -8,10 +8,10 @@ class Oxigraph < Formula
   depends_on "rust" => :build
 
   def install
-    system "cargo", "install", "--locked", "--root", prefix, "--path", "server"
+    system "cargo", "install", "--locked", "--root", prefix, "--path", "cli"
   end
 
   test do
-    assert_match "oxigraph_server", shell_output("#{bin}/oxigraph_server --help")
+    assert_match "oxigraph", shell_output("#{bin}/oxigraph --help")
   end
 end
